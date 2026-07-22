@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creativity & Work Environment Survey</title>
+<style>
+  :root{
+    --ink:#1c2530;
+    --ink-soft:#5a6673;
+    --paper:#f6f4ee;
+    --card:#ffffff;
+    --line:#e2ddd2;
+    --accent:#2f6f6a;
+    --accent-soft:#e4efed;
+    --focus:#1f4f4b;
+    --err:#b23b3b;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Georgia","Iowan Old Style",serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px;}
+  header.hero{
+    padding:64px 20px 40px;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    margin:0 0 14px;
+  }
+  h1{
+    font-size:2.35rem;
+    line-height:1.15;
+    margin:0 0 16px;
+    font-weight:600;
+  }
+  .lede{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0;
+  }
+  .meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.8rem;
+    color:var(--ink-soft);
+    margin-top:22px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+  section.block{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px 28px;
+    margin-bottom:22px;
+  }
+  section.invite{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:var(--radius);
+    padding:28px 30px;
+    margin-bottom:26px;
+  }
+  section.invite p{margin:0 0 13px;font-size:1rem;line-height:1.6;}
+  section.invite p:last-child{margin-bottom:0;}
+  .logo-mark{
+    display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+    padding-bottom:18px;margin-bottom:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .logo-img{max-height:56px;width:auto;display:block;}
+  .logo-x{
+    font-family:"Georgia",serif;font-weight:700;font-size:1.9rem;
+    letter-spacing:.08em;color:var(--accent);line-height:1;
+  }
+  .logo-sub{
+    font-family:"Helvetica Neue",Arial,sans-serif;font-size:.74rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  section.invite .signoff{
+    margin-top:20px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:.95rem;
+    line-height:1.5;
+  }
+  section.invite .signoff span{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.82rem;
+    color:var(--ink-soft);
+  }
+  section.standing-instr{
+    background:var(--accent-soft);
+    border:1px solid #cfe2df;
+    border-radius:var(--radius);
+    padding:20px 24px;
+    margin-bottom:26px;
+  }
+  section.standing-instr p{
+    margin:0 0 11px;
+    font-size:.98rem;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  section.standing-instr p:last-child{margin-bottom:0;}
+  .block-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+  .block-num{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:.05em;
+  }
+  h2{font-size:1.3rem;margin:0;font-weight:600;}
+  .block-instr{
+    color:var(--ink-soft);
+    font-size:.95rem;
+    margin:8px 0 22px;
+  }
+  .src{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.78rem;
+    margin:4px 0 0;
+    color:var(--ink-soft);
+  }
+  .src a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft);}
+  .src a:hover{border-bottom-color:var(--accent);}
+  .ph-banner{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.82rem;
+    line-height:1.5;
+    color:#7a5a2e;
+    background:#fbf3e3;
+    border:1px solid #ecd9b0;
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:18px;
+  }
+  .prov-banner{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.8rem;
+    line-height:1.5;
+    color:#8a5a1e;
+    background:#fdf6ea;
+    border:1px dashed #e0b877;
+    border-radius:10px;
+    padding:11px 14px;
+    margin-bottom:18px;
+  }
+  .q.ph .q-text{display:flex;align-items:center;gap:10px;color:var(--ink-soft);}
+  .ph-tag{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.7rem;font-weight:700;letter-spacing:.05em;
+    color:var(--accent);background:var(--accent-soft);
+    padding:2px 7px;border-radius:6px;
+  }
+  .ph-text{font-style:italic;}
+  .dim-tag{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.66rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    color:#7a5a2e;background:#f3e7cf;
+    padding:2px 7px;border-radius:6px;
+  }
+  .q.ph .scale{opacity:.55;}
+  textarea{
+    width:100%;
+    padding:12px 13px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.95rem;
+    line-height:1.6;
+    background:#fbfaf6;
+    color:var(--ink);
+    resize:vertical;
+    min-height:120px;
+  }
+  textarea:focus{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--accent);}
+  .q.aut .q-text{margin-bottom:10px;}
+  .q{padding:16px 0;border-top:1px solid var(--line);}
+  .q:first-of-type{border-top:none;}
+  .q-text{margin:0 0 12px;font-size:1rem;}
+  .q-text .rev{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.68rem;
+    color:var(--ink-soft);
+    letter-spacing:.06em;
+    vertical-align:super;
+  }
+  .scale{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .scale label{
+    flex:1;
+    min-width:64px;
+    position:relative;
+    cursor:pointer;
+  }
+  .scale input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+  .opt{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    text-align:center;
+    padding:10px 4px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#fbfaf6;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.72rem;
+    color:var(--ink-soft);
+    min-height:62px;
+    transition:border-color .12s,background .12s,color .12s;
+  }
+  .opt .num{font-size:1.05rem;font-weight:700;color:var(--ink);font-family:inherit;}
+  .scale input:checked + .opt{
+    border-color:var(--accent);
+    background:var(--accent-soft);
+    color:var(--ink);
+  }
+  .scale input:focus-visible + .opt{
+    outline:2px solid var(--focus);
+    outline-offset:2px;
+  }
+  input[type=text],input[type=number],select{
+    width:100%;
+    padding:11px 13px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.95rem;
+    background:#fbfaf6;
+    color:var(--ink);
+  }
+  input:focus,select:focus{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--accent);}
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .field label{
+    display:block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.85rem;
+    font-weight:600;
+    margin-bottom:7px;
+  }
+  .q.missing .opt{border-color:var(--err);}
+  .q.missing .q-text{color:var(--err);}
+  .submit-row{margin-top:10px;text-align:center;}
+  button.submit{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:1rem;
+    font-weight:600;
+    letter-spacing:.02em;
+    color:#fff;
+    background:var(--accent);
+    border:none;
+    border-radius:12px;
+    padding:16px 44px;
+    cursor:pointer;
+    transition:background .15s,transform .05s;
+  }
+  button.submit:hover{background:var(--focus);}
+  button.submit:active{transform:translateY(1px);}
+  button.submit:disabled{opacity:.55;cursor:not-allowed;}
+  .note{font-family:"Helvetica Neue",Arial,sans-serif;font-size:.8rem;color:var(--ink-soft);margin-top:16px;}
+  .status{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.9rem;
+    margin-top:16px;
+    min-height:1.2em;
+  }
+  .status.error{color:var(--err);}
+  .status.ok{color:var(--accent);}
+  .done{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:56px 32px;
+    text-align:center;
+  }
+  .done h2{font-size:1.6rem;margin:0 0 12px;}
+  .done p{color:var(--ink-soft);max-width:46ch;margin:0 auto;}
+  @media(max-width:560px){
+    h1{font-size:1.85rem;}
+    header.hero{padding:44px 20px 28px;}
+    section.block{padding:24px 18px;}
+    .demo-grid{grid-template-columns:1fr;}
+    .scale label{min-width:52px;}
+    .opt{font-size:.62rem;min-height:56px;}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <p class="eyebrow">Research Questionnaire</p>
+  <h1>Creativity &amp; the Work Environment</h1>
+  <p class="lede">This survey explores how people generate ideas at work and how their workplace shapes that experience. There are no right or wrong answers — please respond as honestly as you can.</p>
+  <p class="meta">About 8–10 minutes · Responses are anonymous · You may stop at any time.</p>
+</header>
+
+<div class="wrap">
+  <section class="invite">
+    <!-- To use the official XLRI logo image: replace the .logo-mark block below with
+         <img src="xlri-logo.png" alt="XLRI Xavier School of Management" class="logo-img">
+         and host xlri-logo.png alongside this file. A text wordmark is used by default
+         so nothing is hotlinked or fabricated. -->
+    <div class="logo-mark">
+      <span class="logo-x">XLRI</span>
+      <span class="logo-sub">Xavier School of Management</span>
+    </div>
+    <p>Dear All,</p>
+    <p>You are invited to participate in a research study on creativity. Your participation is valuable and will make an important contribution to the success of this research.</p>
+    <p>All information you provide will be kept strictly confidential and will be used solely for academic research purposes. Your responses will remain anonymous, and the study will be conducted in accordance with all applicable ethical research standards.</p>
+    <p>Please answer each question honestly and candidly. In most cases, the best response is your first, natural reaction.</p>
+    <p>Thank you for your time and participation.</p>
+    <p class="signoff">Sarah Kazmi<br><span>PhD Scholar</span><br><span>XLRI Xavier School of Management</span></p>
+  </section>
+
+  <section class="standing-instr">
+    <p><strong>Before you begin:</strong> As you answer, please think about your own organization and your day-to-day experience of work there. Each question refers to how things actually are for you at work.</p>
+    <p>There are no right or wrong answers. We are only interested in your honest views, so please respond based on what is true for you — usually your first, natural reaction is best.</p>
+  </section>
+
+  <form id="surveyForm" novalidate>
+
+    <!-- BLOCK 1: DEMOGRAPHICS -->
+    <section class="block">
+      <div class="block-head"><span class="block-num">01</span><h2>About you</h2></div>
+      <p class="block-instr">A few background details, used only for grouping responses.</p>
+      <div class="demo-grid">
+        <div class="field">
+          <label for="DEM1">Age</label>
+          <input type="number" id="DEM1" name="DEM1" min="16" max="99" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="DEM2">Gender</label>
+          <select id="DEM2" name="DEM2">
+            <option value="">Select…</option>
+            <option>Male</option><option>Female</option>
+            <option>Non-binary</option><option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="DEM3">Years at current organization</label>
+          <input type="number" id="DEM3" name="DEM3" min="0" max="60" step="0.5" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="DEM4">Highest education</label>
+          <select id="DEM4" name="DEM4">
+            <option value="">Select…</option>
+            <option>High school</option><option>Diploma</option>
+            <option>Bachelor's</option><option>Master's</option><option>Doctorate</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="DEM5">Position</label>
+          <select id="DEM5" name="DEM5">
+            <option value="">Select…</option>
+            <option>Junior Management</option>
+            <option>Middle Management</option>
+            <option>Senior Management</option>
+            <option>Top Management</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="DEM6">Employee income (monthly)</label>
+          <select id="DEM6" name="DEM6">
+            <option value="">Select…</option>
+            <option>Below 25,000</option>
+            <option>25,000–49,999</option>
+            <option>50,000–74,999</option>
+            <option>75,000–99,999</option>
+            <option>100,000–149,999</option>
+            <option>150,000 and above</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="DEM7">Marital status</label>
+          <select id="DEM7" name="DEM7">
+            <option value="">Select…</option>
+            <option>Single</option><option>Married</option>
+            <option>Divorced</option><option>Widowed</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="DEM8">Number of family members</label>
+          <input type="number" id="DEM8" name="DEM8" min="1" max="30" inputmode="numeric">
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripted blocks render here -->
+    <div id="scaleBlocks"></div>
+
+    <section class="block">
+      <div class="submit-row">
+        <button type="submit" class="submit" id="submitBtn">Submit responses</button>
+        <p class="note">Please answer every rating item before submitting.</p>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+  </form>
+
+  <div class="done" id="thankyou" style="display:none;">
+    <h2>Thank you</h2>
+    <p>Your responses have been recorded. You can close this window now.</p>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   1) PASTE YOUR GOOGLE APPS SCRIPT WEB-APP URL BELOW.
+      See the setup guide for how to get it.
+   ============================================================ */
+const SHEET_ENDPOINT = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+/* ---- Scale definitions ---- */
+const AGREE5 = ["Disagree strongly","Disagree a little","Neutral / no opinion","Agree a little","Agree strongly"];
+const SSCS5  = ["Definitely not","Rather not","Neither yes nor no","Rather yes","Definitely yes"];
+const ANX5   = ["Not at all","A little","A fair amount","Much","Very much"]; // CAS 0-4, published anchors
+const AGREE7 = ["Strongly disagree","Disagree","Somewhat disagree","Neither","Somewhat agree","Agree","Strongly agree"];
+const EXT5   = ["To a small extent","","To a moderate extent","","To a large extent"];
+
+/* Verified blocks carry real items. Placeholder blocks carry a source link and
+   empty slots the researcher fills with official wording before collecting data. */
+const BLOCKS = [
+  { num:"02", title:"How you feel day to day",
+    instr:"Here are characteristics that may or may not apply to you. Indicate how much you agree that each describes you.",
+    scale:AGREE5, prefix:"I am someone who…", verified:true,
+    src:{name:"BFI-2-S Negative Emotionality — Soto & John (2017)", url:"https://www.colby.edu/psychology-departmental/personality-lab/"},
+    items:[
+    ["NEU1","worries a lot.",false],
+    ["NEU2","tends to feel depressed, blue.",false],
+    ["NEU3","is emotionally stable, not easily upset.",true],
+    ["NEU4","is relaxed, handles stress well.",true],
+    ["NEU5","feels secure, comfortable with self.",true],
+    ["NEU6","is temperamental, gets emotional easily.",false],
+  ]},
+  { num:"03", title:"Creativity anxiety",
+    instr:"Below are various situations. For each, choose the response that best describes how much it would make you feel anxious. There are no right or wrong answers.",
+    scale:ANX5, verified:true,
+    src:{name:"Creativity Anxiety Scale — 8 CA items — Daker, Cortes, Lyons & Green (2020), Table 3, J Exp Psychol Gen 149(1):42–57", url:"https://osf.io/847nt/"},
+    items:[
+    ["CANX1","Having to come up with a creative solution to a problem.",false],
+    ["CANX2","Having to come up with a unique way of doing something.",false],
+    ["CANX3","Having to think about something from a novel perspective.",false],
+    ["CANX4","Having to think in an open-ended and creative way.",false],
+    ["CANX5","Having to solve a problem for which the solution is open-ended.",false],
+    ["CANX6","Having to improvise.",false],
+    ["CANX7","Having to think \u201Coutside the box.\u201D",false],
+    ["CANX8","Focusing on novelty over precision when doing something.",false],
+  ]},
+  { num:"04", title:"Your creative self",
+    instr:"Indicate how much each statement applies to you.",
+    scale:SSCS5, verified:true,
+    src:{name:"Short Scale of Creative Self (SSCS) — Karwowski, Lebuda & Wiśniewska (2018)", url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8297998/"},
+    items:[
+    ["CSE1","I know I can efficiently solve even complicated problems.",false],
+    ["CSE2","I trust my creative abilities.",false],
+    ["CSE3","Compared to my friends, I am distinguished by my imagination and ingenuity.",false],
+    ["CSE4","Many times I have proven that I can cope with difficult situations.",false],
+    ["CSE5","I am sure I can deal with problems requiring creative thinking.",false],
+    ["CSE6","I am good at proposing original solutions to problems.",false],
+    ["CPI1","I think I am a creative person.",false],
+    ["CPI2","My creativity is important to who I am.",false],
+    ["CPI3","Being a creative person is important to me.",false],
+    ["CPI4","Creativity is an important part of myself.",false],
+  ]},
+  { num:"05", title:"Idea generation task",
+    instr:"This is a short creative-thinking task. You'll be given two everyday objects. For each, list as many different and unusual uses as you can think of — beyond its normal use. Write one use per line. There are no right answers; aim for original but workable ideas. You have about 3 minutes per object.",
+    aut:true,
+    src:{name:"Alternative Uses Task (Guilford 1967); novelty + usefulness scoring per Vartanian et al.", url:"https://www.sciencedirect.com/science/article/pii/S1053811920308119"},
+    prompts:[
+      ["AUT_BRICK","a brick"],
+      ["AUT_PAPERCLIP","a paperclip"],
+    ] },
+  { num:"06", title:"Your supervisor",
+    instr:"Rate your agreement with each statement about your immediate supervisor.",
+    scale:AGREE7, verified:true,
+    src:{name:"Perceived Supervisor Support — SPOS re-referenced to supervisor (Eisenberger et al. 2002; method per Rhoades & Eisenberger)", url:"https://www.drakevanegdom.com/resources/perceived-organizational-support"},
+    items:[
+    ["SS1","My supervisor values my contributions to my well-being.",false],
+    ["SS2","My supervisor strongly considers my goals and values.",false],
+    ["SS3","My supervisor really cares about my well-being.",false],
+    ["SS4","My supervisor cares about my opinions.",false],
+  ]},
+  { num:"07", title:"Your organization",
+    instr:"Rate your agreement with each statement about your organization.",
+    scale:AGREE7, verified:true,
+    src:{name:"Survey of Perceived Organizational Support, 8-item — Eisenberger et al. (1986); items freely provided on Eisenberger's materials", url:"https://www.drakevanegdom.com/resources/perceived-organizational-support"},
+    items:[
+    ["POS1","The organization values my contribution to its well-being.",false],
+    ["POS2","The organization strongly considers my goals and values.",false],
+    ["POS3","Help is available from the organization when I have a problem.",false],
+    ["POS4","The organization really cares about my well-being.",false],
+    ["POS5","The organization cares about my general satisfaction at work.",false],
+    ["POS6","The organization takes pride in my accomplishments at work.",false],
+    ["POS7","The organization would forgive an honest mistake on my part.",false],
+    ["POS8","The organization cares about my opinions.",false],
+  ]},
+  { num:"08", title:"Workplace practices",
+    instr:"Rate how much you agree with each statement about your workplace.",
+    scale:AGREE5, verified:true, prefix:"In my work area, employees…",
+    src:{name:"High-Performance Work Systems — 10-item scale, Etchegaray & Thomas (2015), J Patient Saf 11(4):221–227; items per Kim, Seo & Jang (2022), IJERPH open access", url:"https://www.mdpi.com/1660-4601/19/20/13708"},
+    items:[
+    ["HPWS1","are provided opportunities to learn new skills.",false],
+    ["HPWS2","are given rewards for doing a good job.",false],
+    ["HPWS3","receive the necessary information to do a good job.",false],
+    ["HPWS4","see teamwork as important for providing quality service.",false],
+    ["HPWS5","are asked how workplace processes can be improved.",false],
+    ["HPWS6","receive performance appraisals that help them improve their performance.",false],
+    ["HPWS7","receive training on quality-improvement methods.",false],
+    ["HPWS8","have job security.",false],
+    ["HPWS9","see improvements in this work area based on the results of employee surveys.",false],
+    ["HPWS10","see the best candidate for the job hired in this work area.",false],
+  ]},
+  { num:"09", title:"Fairness at work",
+    instr:"The following refer to your work outcomes (such as pay, rewards, and promotions), the procedures used to decide them, and how your supervisor treats you. To what extent is each true?",
+    scale:EXT5, verified:true,
+    dimTags:["Distributive","Distributive","Procedural","Procedural","Interpersonal","Interpersonal","Informational","Informational"],
+    src:{name:"Organizational Justice — 8-item short form (Elovainio et al. 2010) drawn from Colquitt (2001), Table 1; verbatim Colquitt items", url:"https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Justice/Colquitt_Dimensionality_of_Organizational_Justice.pdf"},
+    items:[
+    ["DJ1","Does your outcome reflect the effort you have put into your work?",false],
+    ["DJ2","Is your outcome justified, given your performance?",false],
+    ["PJ1","Have you been able to express your views and feelings during those procedures?",false],
+    ["PJ2","Have those procedures been free of bias?",false],
+    ["IPJ1","Has your supervisor treated you with dignity?",false],
+    ["IPJ2","Has your supervisor treated you with respect?",false],
+    ["IFJ1","Has your supervisor been candid in communications with you?",false],
+    ["IFJ2","Has your supervisor explained the procedures thoroughly?",false],
+  ]},
+];
+
+/* ---- Render ---- */
+const host = document.getElementById("scaleBlocks");
+const allItemCodes = [];   // only VERIFIED items are required for submission
+const autCodes = [];       // open-text AUT responses (collected, not required)
+
+function scaleRow(code, scale, required){
+  let opts="";
+  scale.forEach((lab,i)=>{
+    const val=i+1;
+    opts+=`<label><input type="radio" name="${code}" value="${val}"${required?' required':''}>
+           <span class="opt"><span class="num">${val}</span>${lab||"&nbsp;"}</span></label>`;
+  });
+  return `<div class="scale">${opts}</div>`;
+}
+
+BLOCKS.forEach(b=>{
+  const sec=document.createElement("section");
+  sec.className="block";
+  let html=`<div class="block-head"><span class="block-num">${b.num}</span><h2>${b.title}</h2></div>`;
+
+  html+=`<p class="block-instr">${b.instr}</p>`;
+
+  // Provisional-wording warning for blocks whose exact items must be pasted from source
+  if(b.provisional){
+    html+=`<div class="prov-banner">⚠︎ Provisional wording — these items convey the scale's
+           content but are <strong>not the verbatim validated items</strong>. Before collecting
+           data, replace each with the exact wording from the linked source.</div>`;
+  }
+
+  if(b.verified){
+    b.items.forEach(([code,text,rev],idx)=>{
+      allItemCodes.push(code);
+      const lead=b.prefix?`<em>${b.prefix.replace('…','')}</em> ${text}`:text;
+      html+=`<div class="q" data-code="${code}">
+               <p class="q-text">${lead}${rev?'<span class="rev">R</span>':''}</p>
+               ${scaleRow(code,b.scale,true)}
+             </div>`;
+    });
+  } else if(b.aut){
+    b.prompts.forEach(([code,obj])=>{
+      autCodes.push(code);
+      html+=`<div class="q aut" data-code="${code}">
+               <p class="q-text">Uses for <strong>${obj}</strong> — one per line:</p>
+               <textarea name="${code}" rows="6" placeholder="e.g. one idea per line…"></textarea>
+             </div>`;
+    });
+  } else if(b.placeholder){
+    html+=`<div class="ph-banner">Placeholder block — ${b.slots} items. Copy the official
+           wording from the linked source into the fields below before publishing.
+           These items are <strong>not required</strong> so you can preview the survey now.</div>`;
+    for(let i=1;i<=b.slots;i++){
+      const code=(b.slotCodes && b.slotCodes[i-1]) ? b.slotCodes[i-1] : `${b.codePrefix}${i}`;
+      const dim=(b.slotLabels && b.slotLabels[i-1]) ? `<span class="dim-tag">${b.slotLabels[i-1]}</span>` : "";
+      html+=`<div class="q ph" data-code="${code}">
+               <p class="q-text"><span class="ph-tag">${code}</span>${dim}
+                 <span class="ph-text">[ insert official item here ]</span></p>
+               ${scaleRow(code,b.scale,false)}
+             </div>`;
+    }
+  }
+  sec.innerHTML=html;
+  host.appendChild(sec);
+});
+
+/* ---- Submit ---- */
+const form=document.getElementById("surveyForm");
+const statusEl=document.getElementById("status");
+const btn=document.getElementById("submitBtn");
+
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  statusEl.className="status";statusEl.textContent="";
+
+  // validate rating items
+  let firstMissing=null;
+  document.querySelectorAll(".q").forEach(q=>q.classList.remove("missing"));
+  allItemCodes.forEach(code=>{
+    if(!form.querySelector(`input[name="${code}"]:checked`)){
+      const q=document.querySelector(`.q[data-code="${code}"]`);
+      q.classList.add("missing");
+      if(!firstMissing)firstMissing=q;
+    }
+  });
+  if(firstMissing){
+    statusEl.className="status error";
+    statusEl.textContent="Please answer the highlighted item(s) before submitting.";
+    firstMissing.scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+
+  // gather data
+  const data={timestamp:new Date().toISOString()};
+  new FormData(form).forEach((v,k)=>data[k]=v);
+
+  if(SHEET_ENDPOINT.startsWith("PASTE")){
+    statusEl.className="status error";
+    statusEl.textContent="Setup needed: add your Google web-app URL in the code (SHEET_ENDPOINT).";
+    return;
+  }
+
+  btn.disabled=true;
+  statusEl.className="status";statusEl.textContent="Submitting…";
+  try{
+    await fetch(SHEET_ENDPOINT,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(data)
+    });
+    // no-cors gives an opaque response; assume success if no network error
+    form.style.display="none";
+    document.getElementById("thankyou").style.display="block";
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(err){
+    btn.disabled=false;
+    statusEl.className="status error";
+    statusEl.textContent="Something went wrong sending your responses. Please check your connection and try again.";
+  }
+});
+</script>
+</body>
+</html>
