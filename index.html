@@ -261,6 +261,9 @@
   }
   .q.missing .opt{border-color:var(--err);}
   .q.missing .q-text{color:var(--err);}
+  .q.missing textarea{border-color:var(--err);}
+  .field.missing label{color:var(--err);}
+  .field.missing input,.field.missing select{border-color:var(--err);}
   .submit-row{margin-top:10px;text-align:center;}
   button.submit{
     font-family:"Helvetica Neue",Arial,sans-serif;
@@ -631,6 +634,24 @@ form.addEventListener("submit",async e=>{
   e.preventDefault();
   statusEl.className="status";statusEl.textContent="";
 
+  // validate demographics — all personal-detail fields required
+  const demCodes=["DEM1","DEM2","DEM3","DEM4","DEM5","DEM6","DEM7","DEM8"];
+  let firstMissingDem=null;
+  demCodes.forEach(code=>{
+    const el=form.querySelector(`[name="${code}"]`);
+    const field=el?el.closest(".field"):null;
+    if(field) field.classList.remove("missing");
+    if(!el || el.value.trim()===""){
+      if(field){ field.classList.add("missing"); if(!firstMissingDem)firstMissingDem=field; }
+    }
+  });
+  if(firstMissingDem){
+    statusEl.className="status error";
+    statusEl.textContent="Please complete all the personal-detail fields before submitting.";
+    firstMissingDem.scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+
   // validate rating items
   let firstMissing=null;
   document.querySelectorAll(".q").forEach(q=>q.classList.remove("missing"));
@@ -645,6 +666,23 @@ form.addEventListener("submit",async e=>{
     statusEl.className="status error";
     statusEl.textContent="Please answer the highlighted item(s) before submitting.";
     firstMissing.scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+
+  // validate open-text creativity task (brick / paperclip) — must not be empty
+  let firstMissingAut=null;
+  autCodes.forEach(code=>{
+    const ta=form.querySelector(`textarea[name="${code}"]`);
+    const q=document.querySelector(`.q[data-code="${code}"]`);
+    if(q) q.classList.remove("missing");
+    if(!ta || ta.value.trim()===""){
+      if(q){ q.classList.add("missing"); if(!firstMissingAut)firstMissingAut=q; }
+    }
+  });
+  if(firstMissingAut){
+    statusEl.className="status error";
+    statusEl.textContent="Please list at least one use for each object in the idea-generation task before submitting.";
+    firstMissingAut.scrollIntoView({behavior:"smooth",block:"center"});
     return;
   }
 
